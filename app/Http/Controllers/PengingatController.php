@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PengingatController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $items = Pengingat::all();
         return view('pages.pengingat', ['itemList' => $items]);

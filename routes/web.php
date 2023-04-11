@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PengingatController;
 
 /*
@@ -28,6 +29,10 @@ Route::post('/pengingat', [PengingatController::class, 'create']);
 Route::put('/pengingat-update/{id}', [PengingatController::class, 'update']);
 Route::delete('/pengingat-delete/{id}', [PengingatController::class, 'delete']);
 
+Route::get('/datauser', [UserController::class, 'index']);
+Route::post('/datauser', [UserController::class, 'create']);
+Route::put('/datauser-update/{id}', [UserController::class, 'update']);
+Route::delete('/datauser-delete/{id}', [UserController::class, 'delete']);
 
 
 Route::get('/', function () {
@@ -36,10 +41,6 @@ Route::get('/', function () {
 
 Route::get('/index', function () {
     return view('pages.index');
-});
-
-Route::get('/datauser', function () {
-    return view('pages.datauser');
 });
 
 Route::get('/datapengingat', function () {
