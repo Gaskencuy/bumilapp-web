@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pengingat;
 use App\Models\Role;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
@@ -60,6 +61,19 @@ class DatabaseSeeder extends Seeder
 
         );
 
-        
+        Pengingat::create(
+            [
+                'time' => '10:00:00',
+                'nama' => 'Gosok Gigi Siang',
+            ],
+
+        );
+        Pengingat::create(
+            [
+                'time' => '19:00:00',
+                'nama' => 'Gosok Gigi Malam',
+            ],
+
+        );
     }
 }

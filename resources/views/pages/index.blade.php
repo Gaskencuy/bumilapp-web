@@ -568,7 +568,6 @@
 @endsection
 
 @section('sweetalert')
-
     @if (Session::get('loginberhasil'))
         <script>
             swal("Well Done", "Anda Berhasil Login", "success");

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PengingatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,16 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/login', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/pengingat', [PengingatController::class, 'index']);
+Route::post('/pengingat', [PengingatController::class, 'create']);
+Route::put('/pengingat-update/{id}', [PengingatController::class, 'update']);
+Route::delete('/pengingat-delete/{id}', [PengingatController::class, 'delete']);
+
+
 
 Route::get('/', function () {
     return view('login');
@@ -40,8 +48,4 @@ Route::get('/datapengingat', function () {
 
 Route::get('/datapoli', function () {
     return view('pages.datapoli');
-});
-
-Route::get('/pengingat', function () {
-    return view('pages.pengingat');
 });

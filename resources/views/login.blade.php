@@ -46,12 +46,12 @@
                                 <form action="/login" method="POST" class="mt-5 mb-5 login-input">
                                     @csrf
                                     <div class="form-group">
-                                        <input name="email" type="email" class="form-control" placeholder="Email"
-                                            required>
+                                        <input name="email" type="email" class="form-control"
+                                            value="{{ Session::get('email') }}" placeholder="Email" required>
                                     </div>
                                     <div class="form-group">
                                         <input name="password" type="password" class="form-control"
-                                            placeholder="Password" required>
+                                            value="{{ Session::get('password') }}" placeholder="Password" required>
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
@@ -104,5 +104,3 @@
         swal("Well Done", "Anda Berhasil Logout", "success");
     </script>
 @endif
-
-

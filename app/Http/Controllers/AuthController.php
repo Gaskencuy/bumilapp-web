@@ -16,6 +16,9 @@ class AuthController extends Controller
 
     public function authenticate(Request $request)
     {
+        Session::flash('email', $request->email);
+        Session::flash('password', $request->password);
+
         $credentials = $request->validate([
             'email' => ['required'],
             'password' => ['required'],
@@ -33,29 +36,15 @@ class AuthController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                // Session::flash('status', 'success');
-                // Session::flash('message', 'Selamat anda berhasil login sebagai admin!');
-
                 return redirect()->intended('/index')->with('loginberhasil', 'login berhasil');
-                // return redirect('/login')
             } else {
                 return redirect()->intended('/login')->with('loginerror', 'login error');
             }
-            // Session::flash('status', 'failed');
-            // Session::flash('message', 'Login gagal!');
-
-            // return back();
         } elseif ($userLogin == 2) {
-            // Session::flash('status', 'failed');
-            // Session::flash('message', 'Maaf hanya admin yang boleh masuk!');
 
-            // return back();
             return redirect()->intended('/login')->with('bukanadmin', 'login error');
         } elseif ($userLogin == 3) {
-            // Session::flash('status', 'failed');
-            // Session::flash('message', 'Login gagal!');
 
-            // return back();
             return redirect()->intended('/login')->with('failed', 'login error');
         }
     }

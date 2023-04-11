@@ -14,6 +14,7 @@ class Pengingat extends Model
 
     protected $fillable = [
         'nama',
+        'time',
     ];
 
     public function datapoli()
