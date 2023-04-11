@@ -9,7 +9,7 @@
 
 ## For Run This Project:
 - git pull origin main
-- make .env and copy [this code](https://drive.google.com/file/d/1c9pN-CrvFTzshza8l5CYcXCUIEVPC2X_/view?usp=sharing).
+- make file .env and copy [this code](https://drive.google.com/file/d/1c9pN-CrvFTzshza8l5CYcXCUIEVPC2X_/view?usp=sharing).
 - php --ini
 - composer install --ignore-platform-req=ext-gd
 - composer install --ignore-platform-req=ext-zip
