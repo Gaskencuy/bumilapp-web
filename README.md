@@ -9,8 +9,10 @@
 
 ## For Run This Project:
 - git pull origin main
+- make .env and copy [this code](https://drive.google.com/file/d/1c9pN-CrvFTzshza8l5CYcXCUIEVPC2X_/view?usp=sharing).
 - php --ini
-- composer install --ignore-platform-req=ext-gd or composer install --ignore-platform-req=ext-zip
+- composer install --ignore-platform-req=ext-gd
+- composer install --ignore-platform-req=ext-zip
 - php artisan migrate:fresh
 - php artisan migrate:refresh
 - php artisan db:seed
