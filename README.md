@@ -8,6 +8,7 @@
 </p>
 
 ## For Run This Project:
+- git clone https://github.com/Gaskencuy/bumilapp-web.git
 - git pull origin main
 - make file .env and copy [this code](https://drive.google.com/file/d/1c9pN-CrvFTzshza8l5CYcXCUIEVPC2X_/view?usp=sharing).
 - php --ini
