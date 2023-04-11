@@ -170,7 +170,8 @@
                          <div class="dropdown-content-body">
                              <ul>
                                  <li>
-                                     <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                     <a data-toggle="modal" data-target="#profileModal" href="#"><i
+                                             class="icon-user"></i> <span>Profile</span></a>
                                  </li>
                                  <li>
                                      <a href="javascript:void()">
@@ -184,7 +185,8 @@
                                      <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
                                              Screen</span></a>
                                  </li>
-                                 <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                 <li><a data-toggle="modal" data-target="#logoutModal" href="#"><i
+                                             class="icon-key"></i> <span>Logout</span></a>
                                  </li>
                              </ul>
                          </div>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
+    {{-- <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet"> --}}
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -47,11 +47,16 @@
 <!--**********************************
 Scripts
 ***********************************-->
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 <script src="plugins/common/common.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/settings.js"></script>
 <script src="js/gleek.js"></script>
 <script src="js/styleSwitcher.js"></script>
+
 
 <!-- tables -->
 <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
@@ -78,8 +83,8 @@ Scripts
 
 {{-- sweet alert --}}
 
-<script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
-<script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
+{{-- <script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
+<script src="./plugins/sweetalert/js/sweetalert.init.js"></script> --}}
 
 
 <script src="./js/dashboard/dashboard-1.js"></script>
@@ -87,3 +92,5 @@ Scripts
 </body>
 
 </html>
+
+@yield('sweetalert')

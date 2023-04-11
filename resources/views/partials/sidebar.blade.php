@@ -193,6 +193,10 @@
 
  @include('partials.footer')
 
+ @include('partials.logoutmodal')
+
+ @include('partials.profilemodal')
+
  <!--**********************************
         Footer end
     ***********************************-->
