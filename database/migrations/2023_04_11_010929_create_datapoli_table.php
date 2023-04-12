@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pemeriksa');
             $table->text('ttd_pemeriksa');
+            $table->text('bukti_pemeriksaan');
             $table->string('tempat');
             $table->date('tanggal');
             $table->timestamps();

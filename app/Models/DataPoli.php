@@ -15,6 +15,7 @@ class DataPoli extends Model
     protected $fillable = [
         'nama_pemeriksa',
         'ttd_pemeriksa',
+        'bukti_pemeriksaan',
         'tempat',
         'tanggal',
         'id_user'

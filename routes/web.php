@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DataPoliController;
 use App\Http\Controllers\PengingatController;
 
 /*
@@ -34,6 +35,11 @@ Route::post('/datauser', [UserController::class, 'create']);
 Route::put('/datauser-update/{id}', [UserController::class, 'update']);
 Route::delete('/datauser-delete/{id}', [UserController::class, 'delete']);
 
+Route::get('/datapoli', [DataPoliController::class, 'index']);
+Route::post('/datapoli', [DataPoliController::class, 'create']);
+Route::delete('/datapoli-delete/{id}', [DataPoliController::class, 'delete']);
+Route::put('/datapoli-update/{id}', [DataPoliController::class, 'update']);
+
 
 Route::get('/', function () {
     return view('login');
@@ -45,8 +51,4 @@ Route::get('/index', function () {
 
 Route::get('/datapengingat', function () {
     return view('pages.datapengingat');
-});
-
-Route::get('/datapoli', function () {
-    return view('pages.datapoli');
 });

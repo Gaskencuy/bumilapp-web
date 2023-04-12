@@ -36,8 +36,8 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <th>{{ $item->username }}</th>
-                                            <th>{{ $item->email }}</th>
+                                            <td>{{ $item->username }}</td>
+                                            <td>{{ $item->email }}</td>
 
                                             <td class="align-middle text-center">
                                                 <span>
@@ -104,8 +104,8 @@
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button class="btn btn-success" type="submit">Save</button>
-                                                            <button type="button" class="btn btn-danger"
+                                                            <button class="btn btn-danger" type="submit">Save</button>
+                                                            <button type="button" class="btn btn-primary"
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
                                                     </form>
@@ -184,8 +184,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-success" type="submit">Save</button>
-                                            <button type="button" class="btn btn-danger"
+                                            <button class="btn btn-danger" type="submit">Save</button>
+                                            <button type="button" class="btn btn-primary"
                                                 data-dismiss="modal">Close</button>
                                         </div>
                                     </form>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataPoli;
 use App\Models\Pengingat;
 use App\Models\Role;
 use App\Models\User;
@@ -72,6 +73,32 @@ class DatabaseSeeder extends Seeder
             [
                 'time' => '19:00:00',
                 'nama' => 'Gosok Gigi Malam',
+            ],
+
+        );
+
+        DataPoli::create(
+            [
+                'id_user' => '2',
+                'nama_pemeriksa' => 'dr. Rijal Ramadhan',
+                'ttd_pemeriksa' => 'ttd1.jpeg',
+                'bukti_pemeriksaan' => 'bukti1.jpeg',
+                'tempat' => 'RS. Islam',
+                'tanggal' => '2022-05-01',
+
+            ],
+
+        );
+
+        DataPoli::create(
+            [
+                'id_user' => '3',
+                'nama_pemeriksa' => 'dr. Achmad Zakariya',
+                'ttd_pemeriksa' => 'ttd2.png',
+                'bukti_pemeriksaan' => 'bukti2.jpeg',
+                'tempat' => 'RS. Kristen',
+                'tanggal' => '2022-05-01',
+
             ],
 
         );
