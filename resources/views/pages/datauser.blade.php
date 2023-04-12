@@ -13,7 +13,7 @@
                         <h4 class="card-title">Pengingat</h4>
                         <div class="align-right text-right">
                             <button data-toggle="modal" data-target="#addModal" type="button"
-                                class="btn mb-1 btn-rounded btn-outline-warning btn-sm ms-auto">Add</button>
+                                class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered zero-configuration">
@@ -127,7 +127,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="modal-body">Anda Yakin Akan Menghapus Data
-                                                            {{ $item->nama }}?</div>
+                                                            {{ $item->name }}?</div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-danger">Yes</button>
                                                             <button type="button" class="btn btn-primary"

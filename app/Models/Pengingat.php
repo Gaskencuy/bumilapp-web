@@ -13,7 +13,7 @@ class Pengingat extends Model
     protected $table = 'pengingat';
 
     protected $fillable = [
-        'nama',
+        'name',
         'time',
     ];
 

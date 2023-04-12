@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DataPoliController;
+use App\Http\Controllers\DetailPengingatController;
 use App\Http\Controllers\PengingatController;
 
 /*
@@ -20,6 +21,15 @@ use App\Http\Controllers\PengingatController;
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('/index', function () {
+    return view('pages.index');
+});
+
 
 Route::get('/login', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'authenticate']);
@@ -40,15 +50,7 @@ Route::post('/datapoli', [DataPoliController::class, 'create']);
 Route::delete('/datapoli-delete/{id}', [DataPoliController::class, 'delete']);
 Route::put('/datapoli-update/{id}', [DataPoliController::class, 'update']);
 
-
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::get('/index', function () {
-    return view('pages.index');
-});
-
-Route::get('/datapengingat', function () {
-    return view('pages.datapengingat');
-});
+Route::get('/datapengingat', [DetailPengingatController::class, 'index']);
+Route::post('/datapengingat', [DetailPengingatController::class, 'create']);
+Route::delete('/datapengingat-delete/{id}', [DetailPengingatController::class, 'delete']);
+Route::put('/datapengingat-update/{id}', [DetailPengingatController::class, 'update']);

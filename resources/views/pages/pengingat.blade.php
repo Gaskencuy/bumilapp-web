@@ -13,7 +13,7 @@
                         <h4 class="card-title">Pengingat</h4>
                         <div class="align-right text-right">
                             <button data-toggle="modal" data-target="#addModal" type="button"
-                                class="btn mb-1 btn-rounded btn-outline-warning btn-sm ms-auto">Add</button>
+                                class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered zero-configuration">
@@ -34,7 +34,7 @@
                                     @foreach ($itemList as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->name }}</td>
                                             <td>{{ $item->time }}</td>
 
                                             <td class="align-middle text-center">
@@ -66,8 +66,8 @@
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="">Name</label>
-                                                                <input name="nama" type="text"
-                                                                    value="{{ $item->nama }}"
+                                                                <input name="name" type="text"
+                                                                    value="{{ $item->name }}"
                                                                     class="form-control input-rounded"
                                                                     placeholder="Input Rounded" required>
                                                             </div>
@@ -110,7 +110,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="modal-body">Anda Yakin Akan Menghapus Data
-                                                            {{ $item->nama }}?</div>
+                                                            {{ $item->name }}?</div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-danger">Yes</button>
                                                             <button type="button" class="btn btn-primary"
@@ -139,7 +139,7 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="">Name</label>
-                                                <input name="nama" type="text" class="form-control input-rounded"
+                                                <input name="name" type="text" class="form-control input-rounded"
                                                     placeholder="Input Name" required>
                                             </div>
 

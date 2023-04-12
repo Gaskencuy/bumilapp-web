@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\DataPoli;
+use App\Models\DetailPengingat;
 use App\Models\Pengingat;
 use App\Models\Role;
 use App\Models\User;
@@ -65,14 +66,14 @@ class DatabaseSeeder extends Seeder
         Pengingat::create(
             [
                 'time' => '10:00:00',
-                'nama' => 'Gosok Gigi Siang',
+                'name' => 'Gosok Gigi Siang',
             ],
 
         );
         Pengingat::create(
             [
                 'time' => '19:00:00',
-                'nama' => 'Gosok Gigi Malam',
+                'name' => 'Gosok Gigi Malam',
             ],
 
         );
@@ -99,6 +100,26 @@ class DatabaseSeeder extends Seeder
                 'tempat' => 'RS. Kristen',
                 'tanggal' => '2022-05-01',
 
+            ],
+
+        );
+
+        DetailPengingat::create(
+            [
+                'id_pengingat' => '1',
+                'id_user' => '2',
+                'status' => 'belum',
+                'tanggal' => '2022-05-01',
+            ],
+
+        );
+
+        DetailPengingat::create(
+            [
+                'id_pengingat' => '2',
+                'id_user' => '3',
+                'status' => 'belum',
+                'tanggal' => '2022-05-01',
             ],
 
         );

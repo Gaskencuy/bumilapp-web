@@ -13,7 +13,7 @@
                         <h4 class="card-title">Data Poli</h4>
                         <div class="align-right text-right">
                             <button data-toggle="modal" data-target="#addModal" type="button"
-                                class="btn mb-1 btn-rounded btn-outline-warning btn-sm ms-auto">Add</button>
+                                class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered zero-configuration">
@@ -84,14 +84,6 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
-
-                                                            {{-- <div class="form-group">
-                                                                <label for="">Name</label>
-                                                                <input name="name" type="text"
-                                                                    value="{{ $item->name }}"
-                                                                    class="form-control input-rounded"
-                                                                    placeholder="Input Name" required>
-                                                            </div> --}}
 
                                                             <div class="form-group">
                                                                 <label>Nama</label>
@@ -185,7 +177,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="modal-body">Anda Yakin Akan Menghapus Data
-                                                            {{ $item->nama }}?</div>
+                                                            {{ $item->user->name }}?</div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-danger">Yes</button>
                                                             <button type="button" class="btn btn-primary"

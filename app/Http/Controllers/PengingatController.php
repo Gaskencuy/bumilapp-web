@@ -17,7 +17,7 @@ class PengingatController extends Controller
     {
         $item = Pengingat::find($id);
         $item->time = $request->time;
-        $item->nama = $request->nama;
+        $item->name = $request->name;
         $item->save();
         return redirect()->intended('/pengingat')->with('update', 'berhasil update');
     }
@@ -33,7 +33,7 @@ class PengingatController extends Controller
     {
         $item = new Pengingat();
         $item->time = $request->time;
-        $item->nama = $request->nama;
+        $item->name = $request->name;
         $item->save();
         return redirect()->intended('/pengingat')->with('create', 'berhasil create');
     }
