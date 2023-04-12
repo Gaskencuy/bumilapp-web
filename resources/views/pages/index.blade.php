@@ -573,4 +573,10 @@
             swal("Well Done", "Anda Berhasil Login", "success");
         </script>
     @endif
+
+    @if (Session::get('sudahlogin'))
+        <script>
+            swal("Notice", "Anda Masih Login", "success");
+        </script>
+    @endif
 @endsection

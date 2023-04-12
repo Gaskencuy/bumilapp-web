@@ -81,6 +81,12 @@
 
 </html>
 
+@if (Session::get('belumlogin'))
+    <script>
+        swal("Opps Error", "Silahkan Login Dulu", "error");
+    </script>
+@endif
+
 @if (Session::get('loginerror'))
     <script>
         swal("Opps Error", "Login Gagal", "error");
