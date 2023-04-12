@@ -15,6 +15,18 @@ class PengingatController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'time' => 'required',
+                'name' => 'required|max:30',
+            ],
+            [
+                'time.required' => 'time harus diisi',
+                'name.required' => 'name harus diisi',
+                'name.max' => 'name maksimal 30 karakter',
+            ],
+        );
+
         $item = Pengingat::find($id);
         $item->time = $request->time;
         $item->name = $request->name;
@@ -31,6 +43,18 @@ class PengingatController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate(
+            [
+                'time' => 'required',
+                'name' => 'required|max:30',
+            ],
+            [
+                'time.required' => 'time harus diisi',
+                'name.required' => 'name harus diisi',
+                'name.max' => 'name maksimal 30 karakter',
+            ],
+        );
+
         $item = new Pengingat();
         $item->time = $request->time;
         $item->name = $request->name;

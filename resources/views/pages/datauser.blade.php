@@ -10,11 +10,28 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Pengingat</h4>
+                        <h4 class="card-title">Data User</h4>
                         <div class="align-right text-right">
                             <button data-toggle="modal" data-target="#addModal" type="button"
                                 class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">×</span>
+                                </button>
+
+                                <?php
+                                
+                                $nomer = 1;
+                                
+                                ?>
+
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $nomer++ }}. {{ $error }}</li>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-bordered zero-configuration">
                                 <thead>

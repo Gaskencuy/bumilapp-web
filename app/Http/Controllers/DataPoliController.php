@@ -31,6 +31,34 @@ class DataPoliController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate(
+            [
+                'id_user' => 'required',
+                'nama_pemeriksa' => 'required|max:30',
+                'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'tempat' => 'required|max:30',
+                'tanggal' => 'required|date',
+            ],
+            [
+                'id_user.required' => 'Nama User tidak boleh kosong',
+                'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
+                'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
+                'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
+                'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 2 MB',
+                'bukti_pemeriksaan.required' => 'Bukti Pemeriksaan tidak boleh kosong',
+                'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
+                'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 2 MB',
+                'tempat.required' => 'Tempat tidak boleh kosong',
+                'tempat.max' => 'Tempat maksimal 30 karakter',
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'tanggal.date' => 'Tanggal harus berupa tanggal',
+            ],
+        );
+
         $datapoli = new DataPoli();
 
         $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
@@ -55,6 +83,25 @@ class DataPoliController extends Controller
     {
         if ($request->ttd_pemeriksa == null && $request->bukti_pemeriksaan == null) {
 
+            $request->validate(
+                [
+                    'id_user' => 'required',
+                    'nama_pemeriksa' => 'required|max:30',
+                    'tempat' => 'required|max:30',
+                    'tanggal' => 'required|date',
+                ],
+                [
+                    'id_user.required' => 'Nama User tidak boleh kosong',
+                    'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
+                    'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                    'tempat.required' => 'Tempat tidak boleh kosong',
+                    'tempat.max' => 'Tempat maksimal 30 karakter',
+                    'tanggal.required' => 'Tanggal tidak boleh kosong',
+                    'tanggal.date' => 'Tanggal harus berupa tanggal',
+                ],
+            );
+
+
             $datapoli = DataPoli::find($id);
             $datapoli->id_user = $request->id_user;
             $datapoli->nama_pemeriksa = $request->nama_pemeriksa;
@@ -62,6 +109,29 @@ class DataPoliController extends Controller
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
         } elseif ($request->ttd_pemeriksa == null) {
+
+            $request->validate(
+                [
+                    'id_user' => 'required',
+                    'nama_pemeriksa' => 'required|max:30',
+                    'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'tempat' => 'required|max:30',
+                    'tanggal' => 'required|date',
+                ],
+                [
+                    'id_user.required' => 'Nama User tidak boleh kosong',
+                    'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
+                    'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                    'bukti_pemeriksaan.required' => 'Bukti Pemeriksaan tidak boleh kosong',
+                    'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
+                    'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                    'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 2 MB',
+                    'tempat.required' => 'Tempat tidak boleh kosong',
+                    'tempat.max' => 'Tempat maksimal 30 karakter',
+                    'tanggal.required' => 'Tanggal tidak boleh kosong',
+                    'tanggal.date' => 'Tanggal harus berupa tanggal',
+                ],
+            );
 
             $update = DataPoli::where('id', $id)->first();
             File::delete(public_path('foto/bukti') . '/' . $update->bukti_pemeriksaan);
@@ -78,6 +148,29 @@ class DataPoliController extends Controller
             $datapoli->save();
         } elseif ($request->bukti_pemeriksaan == null) {
 
+            $request->validate(
+                [
+                    'id_user' => 'required',
+                    'nama_pemeriksa' => 'required|max:30',
+                    'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'tempat' => 'required|max:30',
+                    'tanggal' => 'required|date',
+                ],
+                [
+                    'id_user.required' => 'Nama User tidak boleh kosong',
+                    'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
+                    'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                    'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
+                    'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
+                    'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                    'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 2 MB',
+                    'tempat.required' => 'Tempat tidak boleh kosong',
+                    'tempat.max' => 'Tempat maksimal 30 karakter',
+                    'tanggal.required' => 'Tanggal tidak boleh kosong',
+                    'tanggal.date' => 'Tanggal harus berupa tanggal',
+                ],
+            );
+
             $update = DataPoli::where('id', $id)->first();
             File::delete(public_path('foto/ttd') . '/' . $update->ttd_pemeriksa);
 
@@ -92,6 +185,34 @@ class DataPoliController extends Controller
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
         } else {
+
+            $request->validate(
+                [
+                    'id_user' => 'required',
+                    'nama_pemeriksa' => 'required|max:30',
+                    'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'tempat' => 'required|max:30',
+                    'tanggal' => 'required|date',
+                ],
+                [
+                    'id_user.required' => 'Nama User tidak boleh kosong',
+                    'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
+                    'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                    'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
+                    'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
+                    'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                    'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 2 MB',
+                    'bukti_pemeriksaan.required' => 'Bukti Pemeriksaan tidak boleh kosong',
+                    'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
+                    'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
+                    'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 2 MB',
+                    'tempat.required' => 'Tempat tidak boleh kosong',
+                    'tempat.max' => 'Tempat maksimal 30 karakter',
+                    'tanggal.required' => 'Tanggal tidak boleh kosong',
+                    'tanggal.date' => 'Tanggal harus berupa tanggal',
+                ],
+            );
 
             $updatettd = DataPoli::where('id', $id)->first();
             File::delete(public_path('foto/ttd') . '/' . $updatettd->ttd_pemeriksa);

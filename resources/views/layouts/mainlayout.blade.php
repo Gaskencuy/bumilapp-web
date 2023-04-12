@@ -24,6 +24,7 @@
     <!-- Daterange picker plugins css -->
     <link href="./plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="./plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="./plugins/toastr/css/toastr.min.css" rel="stylesheet">
     {{-- <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet"> --}}
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -67,6 +68,9 @@ Scripts
 <script src="js/gleek.js"></script>
 <script src="js/styleSwitcher.js"></script>
 
+<!-- Toastr -->
+<script src="./plugins/toastr/js/toastr.min.js"></script>
+<script src="./plugins/toastr/js/toastr.init.js"></script>
 
 <!-- tables -->
 <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>

@@ -32,13 +32,32 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:users,username',
-            'email' => 'required|unique:users,email',
-            'password' => 'required',
-            'repassword' => 'required|same:password',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:30',
+                'email' => 'required|unique:users,email,' . $id . '|max:30',
+                'username' => 'max:30|regex:/^\S*$/u|alpha_dash|unique:users,username,' . $id,
+                'password' => 'required|max:30',
+                'repassword' => 'required|same:password|max:30',
+            ],
+            [
+                'name' => 'name harus diisi',
+                'name.max' => 'name maksimal 30 karakter',
+                'username.required' => 'username harus diisi',
+                'username.unique' => 'username sudah ada',
+                'username.max' => 'username maksimal 30 karakter',
+                'username.regex' => 'username tidak boleh ada spasi',
+                'username.alpha_dash' => 'username tidak boleh ada spasi',
+                'email.required' => 'email harus diisi',
+                'email.unique' => 'email sudah ada',
+                'email.max' => 'email maksimal 30 karakter',
+                'password.required' => 'password harus diisi',
+                'password.max' => 'password maksimal 30 karakter',
+                'repassword.required' => 'repassword harus diisi',
+                'repassword.same' => 'repassword harus sama dengan password',
+            ],
+
+        );
         $user = User::find($id);
         $user->name = $request->name;
         $user->username = $request->username;
@@ -50,13 +69,32 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:users,username',
-            'email' => 'required|unique:users,email',
-            'password' => 'required',
-            'repassword' => 'required|same:password',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:30',
+                'email' => 'required|unique:users,email|max:30',
+                'username' => 'max:30|regex:/^\S*$/u|alpha_dash|unique:users,username,',
+                'password' => 'required|max:30',
+                'repassword' => 'required|same:password|max:30',
+            ],
+            [
+                'name' => 'name harus diisi',
+                'name.max' => 'name maksimal 30 karakter',
+                'username.required' => 'username harus diisi',
+                'username.unique' => 'username sudah ada',
+                'username.max' => 'username maksimal 30 karakter',
+                'username.regex' => 'username tidak boleh ada spasi',
+                'username.alpha_dash' => 'username tidak boleh ada spasi',
+                'email.required' => 'email harus diisi',
+                'email.unique' => 'email sudah ada',
+                'email.max' => 'email maksimal 30 karakter',
+                'password.required' => 'password harus diisi',
+                'password.max' => 'password maksimal 30 karakter',
+                'repassword.required' => 'repassword harus diisi',
+                'repassword.same' => 'repassword harus sama dengan password',
+            ],
+
+        );
         $user = new User();
         $user->name = $request->name;
         $user->username = $request->username;

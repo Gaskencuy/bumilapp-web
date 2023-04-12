@@ -15,6 +15,23 @@
                             <button data-toggle="modal" data-target="#addModal" type="button"
                                 class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">×</span>
+                                </button>
+
+                                <?php
+                                
+                                $nomer = 1;
+                                
+                                ?>
+
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $nomer++ }}. {{ $error }}</li>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-bordered zero-configuration">
                                 <thead>
@@ -61,8 +78,8 @@
                                                     <button data-toggle="modal" data-target="#editModal{{ $item->id }}"
                                                         type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Edit</button>
-                                                    <button data-toggle="modal" data-target="#hapusModal{{ $item->id }}"
-                                                        type="button"
+                                                    <button data-toggle="modal"
+                                                        data-target="#hapusModal{{ $item->id }}" type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-danger btn-sm">Delete</button>
 
                                                 </span>
@@ -84,6 +101,16 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
+                                                            {{-- @if ($errors->any())
+                                                                <div class="alert alert-danger">
+                                                                    <ul>
+                                                                        @foreach ($errors->all() as $error)
+                                                                            <li>{{ $error }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                            @endif --}}
+
 
                                                             <div class="form-group">
                                                                 <label>Nama</label>
@@ -263,6 +290,15 @@
                                         <div class="modal-body">
                                             <div class="modal-body">
 
+                                                {{-- @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif --}}
 
                                                 <div class="form-group">
                                                     <label>Nama</label>
@@ -358,5 +394,15 @@
         <script>
             swal("Done", "Data Berhasil Ditambahkan", "success");
         </script>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 @endsection

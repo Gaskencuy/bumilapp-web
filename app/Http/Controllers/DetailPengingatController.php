@@ -33,6 +33,26 @@ class DetailPengingatController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate(
+            [
+                'id_user' => 'required',
+                'id_pengingat' => 'required',
+                'status' => 'required',
+                'tanggal' => 'required|date',
+            ],
+
+            [
+                'id_user.required' => 'User harus diisi',
+                'id_pengingat.required' => 'Pengingat harus diisi',
+                'status.required' => 'Status harus diisi',
+                'tanggal.required' => 'Tanggal harus diisi',
+                'tanggal.date' => 'Tanggal harus berupa tanggal',
+
+            ],
+
+        );
+
+
         $detailpengingat = new DetailPengingat();
 
         $detailpengingat->id_user = $request->id_user;
@@ -46,6 +66,25 @@ class DetailPengingatController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'id_user' => 'required',
+                'id_pengingat' => 'required',
+                'status' => 'required',
+                'tanggal' => 'required|date',
+            ],
+
+            [
+                'id_user.required' => 'User harus diisi',
+                'id_pengingat.required' => 'Pengingat harus diisi',
+                'status.required' => 'Status harus diisi',
+                'tanggal.required' => 'Tanggal harus diisi',
+                'tanggal.date' => 'Tanggal harus berupa tanggal',
+
+            ],
+
+        );
+
         $detailpengingat = DetailPengingat::find($id);
         $detailpengingat->id_user = $request->id_user;
         $detailpengingat->id_pengingat = $request->id_pengingat;
