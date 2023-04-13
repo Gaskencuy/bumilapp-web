@@ -15,6 +15,7 @@
                             <button data-toggle="modal" data-target="#addModal" type="button"
                                 class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
                         </div>
+
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -58,6 +59,8 @@
 
                                             <td class="align-middle text-center">
                                                 <span>
+                                                    <a class="btn mb-1 btn-rounded btn-outline-success btn-sm"
+                                                        href="/datauser-detail/{{ $item->id }}">Detail</a>
                                                     <button data-toggle="modal" data-target="#editModal{{ $item->id }}"
                                                         type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Edit</button>
@@ -129,6 +132,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
 
                                         {{-- Modal Hapus --}}
                                         <div class="modal fade" id="hapusModal{{ $item->id }}">

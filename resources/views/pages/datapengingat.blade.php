@@ -22,9 +22,9 @@
                                 </button>
 
                                 <?php
-                                
+
                                 $nomer = 1;
-                                
+
                                 ?>
 
                                 @foreach ($errors->all() as $error)
@@ -47,9 +47,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    
+
                                     $no = 1;
-                                    
+
                                     ?>
                                     @foreach ($dataDetailPengingat as $item)
                                         <tr>
@@ -64,7 +64,7 @@
                                                     <span class="badge badge-danger px-2">Belum</span>
                                                 @endif
                                             </td>
-                                            {{-- <td>{{ $item->status }}</td> --}}
+                                      
                                             <td>{{ $item->tanggal }}</td>
 
                                             <td class="align-middle text-center">

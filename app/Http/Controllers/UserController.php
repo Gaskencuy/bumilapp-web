@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\DataPoli;
+use App\Models\DetailPengingat;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
-        // $user = User::where('id_role', '2')->get();
-
         $user = User::with(['role'])
             ->where('id_role', '2')
             ->get();
@@ -20,6 +20,28 @@ class UserController extends Controller
             [
                 'userList' => $user,
             ]
+        );
+    }
+
+    public function detailuser($id)
+    {
+        $detailpengingat = DetailPengingat::with(['user', 'pengingat'])
+            ->where('id_user', $id)
+            ->get();
+
+        $detailpoli = DataPoli::with(['user'])
+            ->where('id_user', $id)
+            ->get();
+
+        $user = User::find($id);
+
+        return view(
+            'pages.datauser-detail',
+            [
+                'detailpengingat' => $detailpengingat,
+                'detailpoli' => $detailpoli,
+                'user' => $user,
+            ],
         );
     }
 

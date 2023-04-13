@@ -31,6 +31,7 @@ Route::get('/index', function () {
 })->middleware('isLogin');
 
 
+
 Route::get('/login', [AuthController::class, 'index'])->middleware('isStay');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout']);
@@ -41,6 +42,7 @@ Route::put('/pengingat-update/{id}', [PengingatController::class, 'update'])->mi
 Route::delete('/pengingat-delete/{id}', [PengingatController::class, 'delete'])->middleware('isLogin');
 
 Route::get('/datauser', [UserController::class, 'index'])->middleware('isLogin');
+Route::get('/datauser-detail/{id}', [UserController::class, 'detailuser'])->middleware('isLogin');
 Route::post('/datauser', [UserController::class, 'create'])->middleware('isLogin');
 Route::put('/datauser-update/{id}', [UserController::class, 'update'])->middleware('isLogin');
 Route::delete('/datauser-delete/{id}', [UserController::class, 'delete'])->middleware('isLogin');
