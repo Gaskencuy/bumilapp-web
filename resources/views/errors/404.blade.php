@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Not Found 404</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 </head>
 
 <body class="h-100">
@@ -52,11 +52,11 @@
             </div>
         </div>
     </div>
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
+    <script src="{{ asset('plugins/common/common.min.js') }}"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
+    <script src="{{ asset('js/settings.js') }}"></script>
+    <script src="{{ asset('js/gleek.js') }}"></script>
+    <script src="{{ asset('js/styleSwitcher.js') }}"></script>
 </body>
 
 </html>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DataPoli;
 use App\Models\DetailPengingat;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
@@ -47,9 +49,20 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->intended('/datauser')->with('delete', 'berhasil delete');
+        try {
+
+            $user = User::find($id);
+
+            if ($user->delete()) {
+                return redirect()->intended('/datauser')->with('delete', 'berhasil delete');
+            }
+        } catch (QueryException $e) {
+
+            if ($e->getCode() === '23000') {
+
+                return redirect()->intended('/datauser')->with('gagal', 'gagal delete');
+            }
+        }
     }
 
     public function update(Request $request, $id)

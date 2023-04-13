@@ -199,6 +199,11 @@
             swal("Done", "Data Berhasil Dihapus", "success");
         </script>
     @endif
+    @if (Session::get('gagal'))
+        <script>
+            swal("Gagal Hapus", "Data Masih Terelasi", "error");
+        </script>
+    @endif
     @if (Session::get('create'))
         <script>
             swal("Done", "Data Berhasil Ditambahkan", "success");

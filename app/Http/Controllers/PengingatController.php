@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengingat;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class PengingatController extends Controller
 {
@@ -36,9 +37,21 @@ class PengingatController extends Controller
 
     public function delete($id)
     {
-        $item = Pengingat::find($id);
-        $item->delete();
-        return redirect()->intended('/pengingat')->with('delete', 'berhasil delete');
+
+        try {
+
+            $item = Pengingat::find($id);
+
+            if ($item->delete()) {
+                return redirect()->intended('/pengingat')->with('delete', 'berhasil delete');
+            }
+        } catch (QueryException $e) {
+
+            if ($e->getCode() === '23000') {
+
+                return redirect()->intended('/pengingat')->with('gagal', 'gagal delete');
+            }
+        }
     }
 
     public function create(Request $request)
