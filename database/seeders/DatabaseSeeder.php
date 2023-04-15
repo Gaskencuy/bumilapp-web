@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         User::create(
 
             [
-                'name' => 'Ilham Ibnu Ahmad',
-                'username' => 'ilhamibnu',
+                'name' => 'admin',
+                'username' => 'admin',
                 'password' => bcrypt('admin'),
                 'email' => 'admin@gmail.com',
                 'id_role' => '1',
@@ -84,6 +84,8 @@ class DatabaseSeeder extends Seeder
                 'nama_pemeriksa' => 'dr. Rijal Ramadhan',
                 'ttd_pemeriksa' => 'ttd1.jpeg',
                 'bukti_pemeriksaan' => 'bukti1.jpeg',
+                'lat' => '-8.152912',
+                'long' => '113.724347',
                 'tempat' => 'RS. Islam',
                 'tanggal' => '2022-05-01',
 
@@ -97,9 +99,10 @@ class DatabaseSeeder extends Seeder
                 'nama_pemeriksa' => 'dr. Achmad Zakariya',
                 'ttd_pemeriksa' => 'ttd2.png',
                 'bukti_pemeriksaan' => 'bukti2.jpeg',
+                'lat' => '-8.1600155',
+                'long' => '113.723187',
                 'tempat' => 'RS. Kristen',
                 'tanggal' => '2022-05-01',
-
             ],
 
         );

@@ -16,6 +16,8 @@ class DataPoli extends Model
         'nama_pemeriksa',
         'ttd_pemeriksa',
         'bukti_pemeriksaan',
+        'lat',
+        'long',
         'tempat',
         'tanggal',
         'id_user'

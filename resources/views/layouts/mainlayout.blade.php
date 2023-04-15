@@ -60,6 +60,8 @@
 Scripts
 ***********************************-->
 
+
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -120,6 +122,7 @@ Scripts
 
 
 <script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
+@yield('script')
 
 </body>
 

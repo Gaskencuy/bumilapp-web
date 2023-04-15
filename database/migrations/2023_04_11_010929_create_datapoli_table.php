@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nama_pemeriksa');
             $table->text('ttd_pemeriksa');
             $table->text('bukti_pemeriksaan');
+            $table->float('lat', 10, 6)->nullable();
+            $table->float('long', 10, 6)->nullable();
             $table->string('tempat');
             $table->date('tanggal');
             $table->timestamps();

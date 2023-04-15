@@ -37,6 +37,8 @@ class DataPoliController extends Controller
                 'nama_pemeriksa' => 'required|max:30',
                 'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
                 'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                'lat' => 'required',
+                'long' => 'required',
                 'tempat' => 'required|max:30',
                 'tanggal' => 'required|date',
             ],
@@ -52,6 +54,8 @@ class DataPoliController extends Controller
                 'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
                 'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
                 'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 5 MB',
+                'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
+                'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                 'tempat.required' => 'Tempat tidak boleh kosong',
                 'tempat.max' => 'Tempat maksimal 30 karakter',
                 'tanggal.required' => 'Tanggal tidak boleh kosong',
@@ -71,6 +75,8 @@ class DataPoliController extends Controller
         $datapoli->nama_pemeriksa = $request->nama_pemeriksa;
         $datapoli->ttd_pemeriksa = $fileNameTTD;
         $datapoli->bukti_pemeriksaan = $fileNameBukti;
+        $datapoli->lat = $request->lat;
+        $datapoli->long = $request->long;
         $datapoli->tempat = $request->tempat;
         $datapoli->tanggal = $request->tanggal;
         $datapoli->save();
@@ -87,6 +93,8 @@ class DataPoliController extends Controller
                 [
                     'id_user' => 'required',
                     'nama_pemeriksa' => 'required|max:30',
+                    'lat' => 'required',
+                    'long' => 'required',
                     'tempat' => 'required|max:30',
                     'tanggal' => 'required|date',
                 ],
@@ -94,6 +102,8 @@ class DataPoliController extends Controller
                     'id_user.required' => 'Nama User tidak boleh kosong',
                     'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
                     'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
+                    'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
+                    'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'tempat.required' => 'Tempat tidak boleh kosong',
                     'tempat.max' => 'Tempat maksimal 30 karakter',
                     'tanggal.required' => 'Tanggal tidak boleh kosong',
@@ -105,6 +115,8 @@ class DataPoliController extends Controller
             $datapoli = DataPoli::find($id);
             $datapoli->id_user = $request->id_user;
             $datapoli->nama_pemeriksa = $request->nama_pemeriksa;
+            $datapoli->lat = $request->lat;
+            $datapoli->long = $request->long;
             $datapoli->tempat = $request->tempat;
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
@@ -115,6 +127,8 @@ class DataPoliController extends Controller
                     'id_user' => 'required',
                     'nama_pemeriksa' => 'required|max:30',
                     'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                    'lat' => 'required',
+                    'long' => 'required',
                     'tempat' => 'required|max:30',
                     'tanggal' => 'required|date',
                 ],
@@ -126,6 +140,8 @@ class DataPoliController extends Controller
                     'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
                     'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
                     'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 5 MB',
+                    'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
+                    'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'tempat.required' => 'Tempat tidak boleh kosong',
                     'tempat.max' => 'Tempat maksimal 30 karakter',
                     'tanggal.required' => 'Tanggal tidak boleh kosong',
@@ -144,6 +160,8 @@ class DataPoliController extends Controller
             $datapoli->nama_pemeriksa = $request->nama_pemeriksa;
             $datapoli->bukti_pemeriksaan = $fileNameBukti;
             $datapoli->tempat = $request->tempat;
+            $datapoli->lat = $request->lat;
+            $datapoli->long = $request->long;
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
         } elseif ($request->bukti_pemeriksaan == null) {
@@ -153,6 +171,8 @@ class DataPoliController extends Controller
                     'id_user' => 'required',
                     'nama_pemeriksa' => 'required|max:30',
                     'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                    'lat' => 'required',
+                    'long' => 'required',
                     'tempat' => 'required|max:30',
                     'tanggal' => 'required|date',
                 ],
@@ -164,6 +184,8 @@ class DataPoliController extends Controller
                     'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
                     'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
                     'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 5 MB',
+                    'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
+                    'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'tempat.required' => 'Tempat tidak boleh kosong',
                     'tempat.max' => 'Tempat maksimal 30 karakter',
                     'tanggal.required' => 'Tanggal tidak boleh kosong',
@@ -182,6 +204,8 @@ class DataPoliController extends Controller
             $datapoli->nama_pemeriksa = $request->nama_pemeriksa;
             $datapoli->ttd_pemeriksa = $fileNameTTD;
             $datapoli->tempat = $request->tempat;
+            $datapoli->lat = $request->lat;
+            $datapoli->long = $request->long;
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
         } else {
@@ -207,6 +231,8 @@ class DataPoliController extends Controller
                     'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
                     'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
                     'bukti_pemeriksaan.max' => 'Bukti Pemeriksaan maksimal 5 MB',
+                    'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
+                    'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'tempat.required' => 'Tempat tidak boleh kosong',
                     'tempat.max' => 'Tempat maksimal 30 karakter',
                     'tanggal.required' => 'Tanggal tidak boleh kosong',
@@ -232,6 +258,8 @@ class DataPoliController extends Controller
             $datapoli->ttd_pemeriksa = $fileNameTTD;
             $datapoli->bukti_pemeriksaan = $fileNameBukti;
             $datapoli->tempat = $request->tempat;
+            $datapoli->lat = $request->lat;
+            $datapoli->long = $request->long;
             $datapoli->tanggal = $request->tanggal;
             $datapoli->save();
         }

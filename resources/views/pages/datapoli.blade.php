@@ -39,8 +39,8 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Nama Pemeriksa</th>
-                                        <th>TTD Pemeriksa</th>
                                         <th>Bukti Pemeriksaan</th>
+                                        <th>Lokasi</th>
                                         <th>Tempat</th>
                                         <th>Tanggal</th>
                                         <th>Action</th>
@@ -59,16 +59,18 @@
                                             <td>{{ $item->nama_pemeriksa }}</td>
                                             <td class="align-middle text-center">
                                                 <span>
-                                                    <button data-toggle="modal" data-target="#ttdModal{{ $item->id }}"
+                                                    <button data-toggle="modal" data-target="#buktiModal{{ $item->id }}"
                                                         type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Detail</button>
+                                                </span>
                                             </td>
 
                                             <td class="align-middle text-center">
                                                 <span>
-                                                    <button data-toggle="modal" data-target="#buktiModal{{ $item->id }}"
-                                                        type="button"
+                                                    <button data-toggle="modal"
+                                                        data-target="#lokasiModal{{ $item->id }}" type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Detail</button>
+                                                </span>
                                             </td>
                                             <td>{{ $item->tempat }}</td>
                                             <td>{{ $item->tanggal }}</td>
@@ -155,6 +157,37 @@
                                                                 </div>
                                                             </div>
 
+
+                                                            <div class="form-group">
+                                                                <label for="">Dapatkan Lokasi Anda</label>
+                                                                <br>
+                                                                <div class="text-center">
+                                                                    <span onclick="getlocationedit()"
+                                                                        class="btn btn-primary btn-sm mb-4"> <a><i
+                                                                                class="fa fa-paper-plane"></i></a>
+                                                                        Dapatkan</span>
+                                                                    {{-- <button onclick="getlocationedit()"
+                                                                        class="btn btn-primary btn-sm mb-4">
+                                                                        <a><i class="fa fa-paper-plane"></i></a>
+                                                                        Dapatkan</button> --}}
+                                                                </div>
+                                                            </div>
+                                                            <div hidden class="form-group">
+                                                                <label for="">Lat</label>
+                                                                <input name="lat" value="{{ $item->lat }}"
+                                                                    id="latedit" type="text"
+                                                                    class="form-control input-rounded"
+                                                                    placeholder="Input Place">
+                                                            </div>
+
+                                                            <div hidden class="form-group">
+                                                                <label for="">Long</label>
+                                                                <input name="long" value="{{ $item->long }}"
+                                                                    id="longedit" type="text"
+                                                                    class="form-control input-rounded"
+                                                                    placeholder="Input Place">
+                                                            </div>
+
                                                             <div class="form-group">
                                                                 <label for="">Tempat</label>
                                                                 <input name="tempat" type="text"
@@ -221,9 +254,16 @@
                                                     <div class="modal-body">
 
 
+                                                        <label>Foto Pemeriksaan</label>
                                                         <img class="d-block w-100"
                                                             src="{{ asset('foto/bukti/' . $item['bukti_pemeriksaan']) }}"
                                                             alt="First slide">
+
+                                                        <br>
+                                                        <label>TTD Pemeriksa</label>
+                                                        <img class="d-block w-100"
+                                                            src="{{ asset('foto/ttd/' . $item['ttd_pemeriksa']) }}"
+                                                            alt="">
 
 
                                                     </div>
@@ -237,22 +277,22 @@
                                             </div>
                                         </div>
 
-                                        {{-- Modal TTD --}}
-                                        <div class="modal fade" id="ttdModal{{ $item->id }}">
+                                        {{-- Modal Lokasi --}}
+                                        <div class="modal fade" id="lokasiModal{{ $item->id }}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">TTD Modal</h5>
+                                                        <h5 class="modal-title">Lokasi Modal</h5>
                                                         <button type="button" class="close"
                                                             data-dismiss="modal"><span>&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
-                                                        <img class="d-block w-100"
-                                                            src="{{ asset('foto/ttd/' . $item['ttd_pemeriksa']) }}"
-                                                            alt="">
-
+                                                        <iframe
+                                                            src="https://www.google.com/maps?q={{ $item->lat }}, {{ $item->long }}&hl=es;z=14&output=embed"
+                                                            width="460" height="460" style="border:0;"
+                                                            allowfullscreen="" loading="lazy"
+                                                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                     </div>
                                                     <div class="modal-footer">
 
@@ -281,17 +321,6 @@
                                         @csrf
                                         <div class="modal-body">
                                             <div class="modal-body">
-
-                                                {{-- @if ($errors->any())
-                                                    <div class="alert alert-danger">
-                                                        <ul>
-                                                            @foreach ($errors->all() as $error)
-                                                                <li>{{ $error }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                @endif --}}
-
                                                 <div class="form-group">
                                                     <label>Nama</label>
                                                     <select name="id_user" class="form-control input-rounded"
@@ -341,11 +370,36 @@
                                                 </div>
 
                                                 <div class="form-group">
+                                                    <label for="">Dapatkan Lokasi Anda</label>
+                                                    <br>
+                                                    <div class="text-center">
+                                                        <span onclick="getlocation()" class="btn btn-primary btn-sm mb-4">
+                                                            <a><i class="fa fa-paper-plane"></i></a>
+                                                            Dapatkan</span>
+                                                        {{-- <button onclick="getlocation()"
+                                                            class="btn btn-primary btn-sm mb-4">
+                                                            <a><i class="fa fa-paper-plane"></i></a> Dapatkan</button> --}}
+                                                    </div>
+                                                </div>
+
+                                                <div hidden class="form-group">
+                                                    <label for="">Lat</label>
+                                                    <input name="lat" id="lat" type="text"
+                                                        class="form-control input-rounded" placeholder="Input Place">
+                                                </div>
+
+                                                <div hidden class="form-group">
+                                                    <label for="">Long</label>
+                                                    <input name="long" id="long" type="text"
+                                                        class="form-control input-rounded" placeholder="Input Place">
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label for="">Tempat</label>
                                                     <input name="tempat" type="text"
-                                                        class="form-control input-rounded" placeholder="Input Place"
-                                                        required>
+                                                        class="form-control input-rounded" placeholder="Input Place">
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label for="">Tanggal</label>
                                                     <input name="tanggal" type="date"
@@ -369,6 +423,43 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('script')
+    <script type="text/javascript">
+        function getlocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                swal("Wrong!", "Browser Anda Tidak Support", "error");
+            }
+        }
+
+        function showPosition(position) {
+            $('#lat').val(position.coords.latitude);
+            $('#long').val(position.coords.longitude);
+
+            swal("Done", "Lokasi Berhasil Didapatkan", "success");
+        }
+    </script>
+
+    <script type="text/javascript">
+        function getlocationedit() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPositionedit);
+            } else {
+                swal("Wrong!", "Browser Anda Tidak Support", "error");
+            }
+        }
+
+        function showPositionedit(position) {
+            $('#latedit').val(position.coords.latitude);
+            $('#longedit').val(position.coords.longitude);
+
+            swal("Done", "Lokasi Berhasil Didapatkan", "success");
+        }
+    </script>
 @endsection
 
 @section('sweetalert')

@@ -74,8 +74,8 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Nama Pemeriksa</th>
-                                        <th>Bukti TTD</th>
                                         <th>Bukti Pemeriksaan</th>
+                                        <th>Lokasi</th>
                                         <th>Tempat</th>
                                         <th>Tanggal</th>
                                     </tr>
@@ -91,7 +91,7 @@
                                             <td>{{ $item->nama_pemeriksa }}</td>
                                             <td class="align-middle text-center">
                                                 <span>
-                                                    <button data-toggle="modal" data-target="#ttdModal{{ $item->id }}"
+                                                    <button data-toggle="modal" data-target="#buktiModal{{ $item->id }}"
                                                         type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Detail</button>
                                             </td>
@@ -99,7 +99,7 @@
                                             <td class="align-middle text-center">
                                                 <span>
                                                     <button data-toggle="modal"
-                                                        data-target="#buktiModal{{ $item->id }}" type="button"
+                                                        data-target="#lokasiModal{{ $item->id }}" type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Detail</button>
                                             </td>
                                             <td>{{ $item->tempat }}</td>
@@ -119,13 +119,16 @@
                                                     </div>
 
                                                     <div class="modal-body">
-
-
+                                                        <label>Foto Pemeriksaan</label>
                                                         <img class="d-block w-100"
                                                             src="{{ asset('foto/bukti/' . $item['bukti_pemeriksaan']) }}"
                                                             alt="First slide">
 
-
+                                                        <br>
+                                                        <label>TTD Pemeriksa</label>
+                                                        <img class="d-block w-100"
+                                                            src="{{ asset('foto/ttd/' . $item['ttd_pemeriksa']) }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="modal-footer">
 
@@ -137,22 +140,22 @@
                                             </div>
                                         </div>
 
-                                        {{-- Modal TTD --}}
-                                        <div class="modal fade" id="ttdModal{{ $item->id }}">
+                                        {{-- Lokasi TTD --}}
+                                        <div class="modal fade" id="lokasiModal{{ $item->id }}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">TTD Modal</h5>
+                                                        <h5 class="modal-title">Lokasi Modal</h5>
                                                         <button type="button" class="close"
                                                             data-dismiss="modal"><span>&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
-                                                        <img class="d-block w-100"
-                                                            src="{{ asset('foto/ttd/' . $item['ttd_pemeriksa']) }}"
-                                                            alt="">
-
+                                                        <iframe
+                                                            src="https://www.google.com/maps?q={{ $item->lat }}, {{ $item->long }}&hl=es;z=14&output=embed"
+                                                            width="460" height="460" style="border:0;"
+                                                            allowfullscreen="" loading="lazy"
+                                                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                     </div>
                                                     <div class="modal-footer">
 
