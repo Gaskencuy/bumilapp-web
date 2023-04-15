@@ -54,5 +54,6 @@ Route::put('/datapoli-update/{id}', [DataPoliController::class, 'update'])->midd
 
 Route::get('/datapengingat', [DetailPengingatController::class, 'index'])->middleware('IsLogin');
 Route::post('/datapengingat', [DetailPengingatController::class, 'create'])->middleware('IsLogin');
+route::post('/autoinsert', [DetailPengingatController::class, 'autoinserteveryday']);
 Route::delete('/datapengingat-delete/{id}', [DetailPengingatController::class, 'delete'])->middleware('IsLogin');
 Route::put('/datapengingat-update/{id}', [DetailPengingatController::class, 'update'])->middleware('IsLogin');

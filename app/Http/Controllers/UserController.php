@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DataPoli;
 use App\Models\DetailPengingat;
+use App\Models\Pengingat;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
@@ -51,8 +52,8 @@ class UserController extends Controller
     {
         try {
 
+            DetailPengingat::where('id_user', $id)->delete();
             $user = User::find($id);
-
             if ($user->delete()) {
                 return redirect()->intended('/datauser')->with('delete', 'berhasil delete');
             }
@@ -137,6 +138,23 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->id_role = '2';
         $user->save();
+
+        if ($user->save()) {
+
+            Pengingat::all();
+            $pengingat = Pengingat::all();
+
+            foreach ($pengingat as $p) {
+                $detailpengingat = new DetailPengingat();
+                $detailpengingat->id_pengingat = $p->id;
+                $detailpengingat->id_user = $user->id;
+                $detailpengingat->status = 'belum';
+                $detailpengingat->tanggal = date('Y-m-d');
+                $detailpengingat->save();
+            }
+        }
+
+
         return redirect()->intended('/datauser')->with('create', 'berhasil create');
     }
 }

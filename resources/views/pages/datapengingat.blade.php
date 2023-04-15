@@ -11,10 +11,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Pengingat</h4>
+
                         <div class="align-right text-right">
+
                             <button data-toggle="modal" data-target="#addModal" type="button"
                                 class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
+
+                            <form action="/autoinsert" method="post">
+                                @csrf
+                                <button class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto"
+                                    type="submit">Save</button>
+                            </form>
                         </div>
+
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -22,9 +31,9 @@
                                 </button>
 
                                 <?php
-
+                                
                                 $nomer = 1;
-
+                                
                                 ?>
 
                                 @foreach ($errors->all() as $error)
@@ -47,9 +56,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-
+                                    
                                     $no = 1;
-
+                                    
                                     ?>
                                     @foreach ($dataDetailPengingat as $item)
                                         <tr>
@@ -64,7 +73,7 @@
                                                     <span class="badge badge-danger px-2">Belum</span>
                                                 @endif
                                             </td>
-                                      
+
                                             <td>{{ $item->tanggal }}</td>
 
                                             <td class="align-middle text-center">
@@ -290,6 +299,11 @@
         </script>
     @endif
     @if (Session::get('create'))
+        <script>
+            swal("Done", "Data Berhasil Ditambahkan", "success");
+        </script>
+    @endif
+    @if (Session::get('autoinsert'))
         <script>
             swal("Done", "Data Berhasil Ditambahkan", "success");
         </script>
