@@ -162,13 +162,12 @@
 
                                             <div class="form-group">
                                                 <label for="">Time</label>
-                                                <div class="input-group clockpicker">
+                                                <div class="input-group ">
 
-                                                    <input type="text" name="time"
+                                                    <input type="time" name="time"
                                                         class="form-control input-rounded" placeholder="Input Time"
                                                         required>
-                                                    <span class="input-group-append"><span class="input-group-text"><i
-                                                                class="fa fa-clock-o"></i></span></span>
+
                                                 </div>
                                             </div>
                                         </div>

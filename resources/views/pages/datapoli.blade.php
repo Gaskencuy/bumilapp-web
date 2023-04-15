@@ -130,33 +130,24 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="">Upload TTD Pemeriksa</label>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend"><span
-                                                                            class="input-group-text">Upload</span>
-                                                                    </div>
-                                                                    <div class="custom-file">
-                                                                        <input name="ttd_pemeriksa" type="file"
-                                                                            class="custom-file-input">
-                                                                        <label class="custom-file-label">Choose file</label>
-                                                                    </div>
-                                                                </div>
+
+                                                                <label for="formFile" class="form-label">Upload TTD
+                                                                    Pemeriksa</label>
+                                                                <input name="ttd_pemeriksa"
+                                                                    class="form-control input-rounded" type="file"
+                                                                    id="formFile">
+
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="">Upload Bukti Pemeriksaan</label>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend"><span
-                                                                            class="input-group-text">Upload</span>
-                                                                    </div>
-                                                                    <div class="custom-file">
-                                                                        <input name="bukti_pemeriksaan" type="file"
-                                                                            class="custom-file-input">
-                                                                        <label class="custom-file-label">Choose file</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
+                                                                <label for="formFile" class="form-label">Upload Bukti
+                                                                    Pemeriksaan</label>
+                                                                <input name="bukti_pemeriksaan"
+                                                                    class="form-control input-rounded" type="file"
+                                                                    id="formFile">
+
+                                                            </div>
 
                                                             <div class="form-group">
                                                                 <label for="">Dapatkan Lokasi Anda</label>
@@ -342,31 +333,21 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="">Upload TTD Pemeriksa</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span
-                                                                class="input-group-text">Upload</span>
-                                                        </div>
-                                                        <div class="custom-file">
-                                                            <input name="ttd_pemeriksa" type="file"
-                                                                class="custom-file-input" required>
-                                                            <label class="custom-file-label">Choose file</label>
-                                                        </div>
-                                                    </div>
+
+                                                    <label for="formFile" class="form-label">Upload TTD
+                                                        Pemeriksa</label>
+                                                    <input name="ttd_pemeriksa" class="form-control input-rounded"
+                                                        type="file" id="formFile">
+
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="">Upload Bukti Pemeriksaan</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span
-                                                                class="input-group-text">Upload</span>
-                                                        </div>
-                                                        <div class="custom-file">
-                                                            <input name="bukti_pemeriksaan" type="file"
-                                                                class="custom-file-input" required>
-                                                            <label class="custom-file-label">Choose file</label>
-                                                        </div>
-                                                    </div>
+
+                                                    <label for="formFile" class="form-label">Upload Bukti
+                                                        Pemeriksaan</label>
+                                                    <input name="bukti_pemeriksaan" class="form-control input-rounded"
+                                                        type="file" id="formFile">
+
                                                 </div>
 
                                                 <div class="form-group">
