@@ -52,16 +52,25 @@ class DetailPengingatController extends Controller
 
         );
 
+        $datapengingat = DetailPengingat::where('id_user', $request->id_user)
+            ->where('id_pengingat', $request->id_pengingat)
+            ->where('tanggal', $request->tanggal)
+            ->first();
 
-        $detailpengingat = new DetailPengingat();
+        if ($datapengingat) {
+            return redirect('/datapengingat')->with('sudahada', 'Data sudah ada');
+        } else {
 
-        $detailpengingat->id_user = $request->id_user;
-        $detailpengingat->id_pengingat = $request->id_pengingat;
-        $detailpengingat->status = $request->status;
-        $detailpengingat->tanggal = $request->tanggal;
-        $detailpengingat->save();
+            $detailpengingat = new DetailPengingat();
 
-        return redirect('/datapengingat')->with('create', 'berhasil create');
+            $detailpengingat->id_user = $request->id_user;
+            $detailpengingat->id_pengingat = $request->id_pengingat;
+            $detailpengingat->status = $request->status;
+            $detailpengingat->tanggal = $request->tanggal;
+            $detailpengingat->save();
+
+            return redirect('/datapengingat')->with('create', 'berhasil create');
+        }
     }
 
     public function update(Request $request, $id)

@@ -6,6 +6,7 @@ use App\Models\Pengingat;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
+
 class PengingatController extends Controller
 {
     public function index()

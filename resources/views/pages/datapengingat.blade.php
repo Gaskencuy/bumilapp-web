@@ -17,11 +17,7 @@
                             <button data-toggle="modal" data-target="#addModal" type="button"
                                 class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto">Add</button>
 
-                            <form action="/autoinsert" method="post">
-                                @csrf
-                                <button class="btn mb-1 btn-rounded btn-outline-primary btn-sm ms-auto"
-                                    type="submit">Save</button>
-                            </form>
+
                         </div>
 
                         @if ($errors->any())
@@ -303,9 +299,9 @@
             swal("Done", "Data Berhasil Ditambahkan", "success");
         </script>
     @endif
-    @if (Session::get('autoinsert'))
+    @if (Session::get('sudahada'))
         <script>
-            swal("Done", "Data Berhasil Ditambahkan", "success");
+            swal("Whats Wrong!", "Data Sudah Ada", "error");
         </script>
     @endif
 @endsection

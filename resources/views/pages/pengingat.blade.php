@@ -168,8 +168,8 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="">Name</label>
-                                                <input name="name" type="text" class="form-control input-rounded"
-                                                    placeholder="Input Name" required>
+                                                <input name="name" placeholder="Input Name" type="text"
+                                                    class="form-control input-rounded" required>
                                             </div>
 
                                             <div class="form-group">
