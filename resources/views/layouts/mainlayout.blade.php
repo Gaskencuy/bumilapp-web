@@ -8,6 +8,8 @@
     <title>Bumil App - @yield('title')</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Pignose Calender -->
     {{-- <link href="{{ asset('plugins/pg-calendar/css/pignose.calendar.min.css') }}" rel="stylesheet"> --}}
     <!-- Chartist -->
@@ -61,8 +63,6 @@
     <!--**********************************
 Scripts
 ***********************************-->
-
-
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

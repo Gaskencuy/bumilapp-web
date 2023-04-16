@@ -91,6 +91,18 @@
 
                                                             <div class="form-group">
                                                                 <label for="">Time</label>
+                                                                <div class="input-group ">
+
+                                                                    <input name="time" type="time"
+                                                                        value="{{ $item->time }}" name="time"
+                                                                        class="form-control input-rounded"
+                                                                        placeholder="Input Time" required>
+
+                                                                </div>
+                                                            </div>
+
+                                                            {{-- <div class="form-group">
+                                                                <label for="">Time</label>
                                                                 <div class="input-group clockpicker">
 
                                                                     <input type="text" name="time"
@@ -101,7 +113,7 @@
                                                                             class="input-group-text"><i
                                                                                 class="fa fa-clock-o"></i></span></span>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button class="btn btn-danger" type="submit">Save</button>

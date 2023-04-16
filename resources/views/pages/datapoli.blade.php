@@ -47,6 +47,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+
+
                                     <?php
                                     
                                     $no = 1;
@@ -131,23 +134,31 @@
 
                                                             <div class="form-group">
 
-                                                                <label for="formFile" class="form-label">Upload TTD
-                                                                    Pemeriksa</label>
-                                                                <input name="ttd_pemeriksa"
-                                                                    class="form-control input-rounded" type="file"
-                                                                    id="formFile">
+                                                                <div class="mb-3">
+
+                                                                    <label for="formFile" class="form-label">Upload TTD
+                                                                        Pemeriksa</label>
+                                                                    <input name="ttd_pemeriksa"
+                                                                        class="form-control input-rounded" id="formFileSm"
+                                                                        type="file">
+                                                                </div>
 
                                                             </div>
 
                                                             <div class="form-group">
 
-                                                                <label for="formFile" class="form-label">Upload Bukti
-                                                                    Pemeriksaan</label>
-                                                                <input name="bukti_pemeriksaan"
-                                                                    class="form-control input-rounded" type="file"
-                                                                    id="formFile">
+                                                                <div class="mb-3">
+
+                                                                    <label for="formFile" class="form-label">Upload Bukti
+                                                                        Pemeriksaan</label>
+                                                                    <input name="bukti_pemeriksaan"
+                                                                        class="form-control input-rounded" id="formFileSm"
+                                                                        type="file">
+                                                                </div>
 
                                                             </div>
+
+
 
                                                             <div class="form-group">
                                                                 <label for="">Dapatkan Lokasi Anda</label>
@@ -332,23 +343,32 @@
                                                         placeholder="Input Nama Pemeriksa" required>
                                                 </div>
 
+
                                                 <div class="form-group">
 
-                                                    <label for="formFile" class="form-label">Upload TTD
-                                                        Pemeriksa</label>
-                                                    <input name="ttd_pemeriksa" class="form-control input-rounded"
-                                                        type="file" id="formFile">
+                                                    <div class="mb-3">
+
+                                                        <label for="formFile" class="form-label">Upload TTD
+                                                            Pemeriksa</label>
+                                                        <input name="ttd_pemeriksa" class="form-control input-rounded"
+                                                            id="formFileSm" type="file">
+                                                    </div>
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label for="formFile" class="form-label">Upload Bukti
-                                                        Pemeriksaan</label>
-                                                    <input name="bukti_pemeriksaan" class="form-control input-rounded"
-                                                        type="file" id="formFile">
+                                                    <div class="mb-3">
+
+                                                        <label for="formFile" class="form-label">Upload Bukti
+                                                            Pemeriksaan</label>
+                                                        <input name="bukti_pemeriksaan" class="form-control input-rounded"
+                                                            id="formFileSm" type="file">
+                                                    </div>
 
                                                 </div>
+
+
 
                                                 <div class="form-group">
                                                     <label for="">Dapatkan Lokasi Anda</label>
