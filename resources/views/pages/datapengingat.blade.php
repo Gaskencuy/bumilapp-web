@@ -295,25 +295,44 @@
                     ['10 rows', '25 rows', '50 rows', 'Show all']
                 ],
 
-                buttons: [
+                buttons: [{
+                        extend: 'colvis',
+                        className: 'btn btn-primary btn-sm',
+                        text: 'Column Visibility',
+                        // columns: ':gt(0)'
 
-                    'colvis', 'pageLength',
+
+                    },
+
+                    {
+
+                        extend: 'pageLength',
+                        className: 'btn btn-primary btn-sm',
+                        text: 'Page Length',
+                        // columns: ':gt(0)'
+                    },
+
+
+                    // 'colvis', 'pageLength',
 
                     {
                         extend: 'excel',
+                        className: 'btn btn-primary btn-sm',
                         exportOptions: {
                             columns: [0, ':visible']
                         }
                     },
 
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            columns: [0, ':visible']
-                        }
-                    },
+                    // {
+                    //     extend: 'csv',
+                    //     className: 'btn btn-primary btn-sm',
+                    //     exportOptions: {
+                    //         columns: [0, ':visible']
+                    //     }
+                    // },
                     {
                         extend: 'pdf',
+                        className: 'btn btn-primary btn-sm',
                         exportOptions: {
                             columns: [0, ':visible']
                         }
@@ -321,6 +340,7 @@
 
                     {
                         extend: 'print',
+                        className: 'btn btn-primary btn-sm',
                         exportOptions: {
                             columns: [0, ':visible']
                         }

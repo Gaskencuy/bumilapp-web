@@ -57,6 +57,7 @@ class UserController extends Controller
             DetailPengingat::where('id_user', $id)->delete();
             $user = User::find($id);
             if ($user->delete()) {
+
                 return redirect()->intended('/datauser')->with('delete', 'berhasil delete');
             }
         } catch (QueryException $e) {
@@ -159,4 +160,5 @@ class UserController extends Controller
 
         return redirect()->intended('/datauser')->with('create', 'berhasil create');
     }
+
 }
