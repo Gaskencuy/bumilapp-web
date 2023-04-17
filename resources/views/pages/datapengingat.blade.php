@@ -27,9 +27,9 @@
                                 </button>
 
                                 <?php
-                                
+
                                 $nomer = 1;
-                                
+
                                 ?>
 
                                 @foreach ($errors->all() as $error)
@@ -52,9 +52,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    
+
                                     $no = 1;
-                                    
+
                                     ?>
                                     @foreach ($dataDetailPengingat as $item)
                                         <tr>
