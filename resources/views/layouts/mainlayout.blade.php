@@ -15,7 +15,10 @@
     <!-- Chartist -->
     <link rel="stylesheet" href="{{ asset('plugins/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatablesbutton.css') }}">
     <link href="{{ asset('plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> --}}
+
     {{-- <link href="{{ asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}"
         rel="stylesheet"> --}}
     <!-- Page plugins css -->
@@ -30,6 +33,8 @@
     {{-- <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet"> --}}
     <!-- Custom Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    @yield('css')
 
 </head>
 
@@ -75,9 +80,21 @@ Scripts
 
 
     <!-- tables -->
+    {{-- <script src="{{ asset('plugins/tables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script> --}}
+
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
     <script src="{{ asset('plugins/tables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
 
     <script src="{{ asset('plugins/moment/moment.js') }}"></script>
     {{-- <script src="{{ asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}">
@@ -114,6 +131,8 @@ Scripts
     <script src="{{ asset('plugins/chartist/js/chartist.min.js') }}"></script>
     <script src="{{ asset('plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
+
+
     @yield('script')
 
 </body>

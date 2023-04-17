@@ -25,7 +25,7 @@
                                 </tbody>
                             </table>
 
-                            <table class="table table-bordered zero-configuration">
+                            <table id="example" class="table table-bordered zero-configuration">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -68,7 +68,7 @@
                             </table>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-bordered zero-configuration">
+                            <table id="exampleaja" class="table table-bordered zero-configuration">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -176,4 +176,105 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+
+
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+
+                buttons: [
+
+                    'colvis', 'pageLength',
+
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    // 'pageLength', 'colvis',
+                    // 'copy', 'csv', 'excel', 'print'
+
+                ],
+
+            });
+        });
+        $(document).ready(function() {
+            $('#exampleaja').DataTable({
+                dom: 'Bfrtip',
+
+
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+
+                buttons: [
+
+                    'colvis', 'pageLength',
+
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+
+                    // 'pageLength', 'colvis',
+                    // 'copy', 'csv', 'excel', 'print'
+
+                ],
+
+            });
+        });
+    </script>
 @endsection
