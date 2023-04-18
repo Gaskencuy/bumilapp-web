@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Android Login
 Route::post('/login', [AndroidLogin::class, 'login']);
 Route::post('/logout', [AndroidLogin::class, 'logout']);
+Route::post('/register', [AndroidLogin::class, 'register']);
