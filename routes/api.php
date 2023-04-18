@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AndroidLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Android Login
+Route::post('/login', [AndroidLogin::class, 'login']);
+Route::post('/logout', [AndroidLogin::class, 'logout']);
