@@ -22,9 +22,9 @@
                                 </button>
 
                                 <?php
-
+                                
                                 $nomer = 1;
-
+                                
                                 ?>
 
                                 @foreach ($errors->all() as $error)
@@ -51,9 +51,9 @@
 
 
                                     <?php
-
+                                    
                                     $no = 1;
-
+                                    
                                     ?>
                                     @foreach ($dataPoli as $item)
                                         <tr>
@@ -137,24 +137,14 @@
                                                                     Pemeriksa</label>
 
                                                                 <div class="mb-3">
-                                                                    <div id="sigedit"></div>
+                                                                    <div id="sigedit{{ $item->id }}"></div>
                                                                     <br /><br />
-                                                                    <button id="clearedit"
-                                                                        class="btn btn-danger btn-sm">Clear</button>
-                                                                    <textarea id="signatureedit" name="ttd_pemeriksa" style="display: none" required></textarea>
+                                                                    <span onclick="deletesignature{{ $item->id }}()"
+                                                                        class="btn btn-danger btn-sm">Clear</span>
 
-                                                                    <script type="text/javascript">
-                                                                        var sigedit = $('#sigedit').signature({
-                                                                            syncField: '#signatureedit',
-                                                                            syncFormat: 'PNG'
-                                                                        });
+                                                                    <textarea id="signatureedit{{ $item->id }}" name="ttd_pemeriksa" style="display: none" required></textarea>
 
-                                                                        $('#clearedit').click(function(e) {
-                                                                            e.preventDefault();
-                                                                            sigedit.signature('clear');
-                                                                            $("#signature64edit").val('');
-                                                                        });
-                                                                    </script>
+
 
                                                                 </div>
 
@@ -252,6 +242,10 @@
                                                     </form>
                                                 </div>
                                             </div>
+
+
+
+
                                         </div>
 
                                         {{-- Modal Hapus --}}
@@ -473,6 +467,9 @@
 @endsection
 
 @section('script')
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
     <script src="{{ asset('sc/getlocation.js') }}"></script>
     <script type="text/javascript">
         var sig = $('#sig').signature({
@@ -482,9 +479,65 @@
         $('#clear').click(function(e) {
             e.preventDefault();
             sig.signature('clear');
-            $("#signature64").val('');
+            $("#signature").val('');
         });
     </script>
+
+    <script type="text/javascript">
+        var sigedit9 = $('#sigedit9').signature({
+            syncField: '#signatureedit9',
+            syncFormat: 'PNG'
+        });
+
+        function deletesignature9() {
+            sigedit9.signature('clear');
+            $("#signatureedit9").val('');
+        }
+    </script>
+
+
+    {{-- <script type="text/javascript">
+        var sigedit12 = $('#sigedit12').signature({
+            syncField: '#signatureedit12',
+            syncFormat: 'PNG'
+        });
+
+        function deletesignature12() {
+            sigedit12.signature('clear');
+            $("#signatureedit12").val('');
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sigedit13 = $('#sigedit13').signature({
+            syncField: '#signatureedit13',
+            syncFormat: 'PNG'
+        });
+
+        function deletesignature13() {
+            sigedit13.signature('clear');
+            $("#signatureedit13").val('');
+        }
+    </script> --}}
+
+
+
+
+    @foreach ($dataPoli as $data)
+        <script type="text/javascript">
+            var sigedit{{ $data->id }} = $('#sigedit{{ $data->id }}').signature({
+                syncField: '#signatureedit{{ $data->id }}',
+                syncFormat: 'PNG'
+            });
+
+            function deletesignature{{ $data->id }}() {
+                sigedit{{ $data->id }}.signature('clear');
+                $("#signatureedit{{ $data->id }}").val('');
+            }
+        </script>
+    @endforeach
+
+
 
     <script>
         $(document).ready(function() {
