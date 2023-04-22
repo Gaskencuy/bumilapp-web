@@ -133,17 +133,37 @@
                                                             </div>
 
                                                             <div class="form-group">
+                                                                <label for="formFile" class="form-label">Upload TTD
+                                                                    Pemeriksa</label>
 
                                                                 <div class="mb-3">
+                                                                    <div id="sigedit"></div>
+                                                                    <br /><br />
+                                                                    <button id="clearedit"
+                                                                        class="btn btn-danger btn-sm">Clear</button>
+                                                                    <textarea id="signatureedit" name="ttd_pemeriksa" style="display: none" required></textarea>
 
-                                                                    <label for="formFile" class="form-label">Upload TTD
-                                                                        Pemeriksa</label>
-                                                                    <input name="ttd_pemeriksa"
-                                                                        class="form-control input-rounded" id="formFileSm"
-                                                                        type="file">
+                                                                    <script type="text/javascript">
+                                                                        var sigedit = $('#sigedit').signature({
+                                                                            syncField: '#signatureedit',
+                                                                            syncFormat: 'PNG'
+                                                                        });
+
+                                                                        $('#clearedit').click(function(e) {
+                                                                            e.preventDefault();
+                                                                            sigedit.signature('clear');
+                                                                            $("#signature64edit").val('');
+                                                                        });
+                                                                    </script>
+
                                                                 </div>
 
+
+
                                                             </div>
+
+
+
 
                                                             <div class="form-group">
 
@@ -164,20 +184,19 @@
                                                                 <label for="">Dapatkan Lokasi Anda</label>
                                                                 <br>
                                                                 <div class="text-center">
-                                                                    <span onclick="getlocationedit()"
+                                                                    <span onclick="getlocationedit{{ $item->id }}()"
                                                                         class="btn btn-primary btn-sm mb-4"> <a><i
                                                                                 class="fa fa-paper-plane"></i></a>
                                                                         Dapatkan</span>
-                                                                    {{-- <button onclick="getlocationedit()"
-                                                                        class="btn btn-primary btn-sm mb-4">
-                                                                        <a><i class="fa fa-paper-plane"></i></a>
-                                                                        Dapatkan</button> --}}
+
                                                                 </div>
+
+
                                                             </div>
                                                             <div hidden class="form-group">
                                                                 <label for="">Lat</label>
                                                                 <input name="lat" value="{{ $item->lat }}"
-                                                                    id="latedit" type="text"
+                                                                    id="latedit{{ $item->id }}" type="text"
                                                                     class="form-control input-rounded"
                                                                     placeholder="Input Place">
                                                             </div>
@@ -185,10 +204,28 @@
                                                             <div hidden class="form-group">
                                                                 <label for="">Long</label>
                                                                 <input name="long" value="{{ $item->long }}"
-                                                                    id="longedit" type="text"
+                                                                    id="longedit{{ $item->id }}" type="text"
                                                                     class="form-control input-rounded"
                                                                     placeholder="Input Place">
                                                             </div>
+
+                                                            <script text="text/javascript">
+                                                                function getlocationedit{{ $item->id }}() {
+                                                                    if (navigator.geolocation) {
+                                                                        navigator.geolocation.getCurrentPosition(showPositionedit{{ $item->id }});
+                                                                    } else {
+                                                                        swal("Wrong!", "Browser Anda Tidak Support", "error");
+                                                                    }
+                                                                }
+
+                                                                function showPositionedit{{ $item->id }}(position) {
+
+                                                                    $('#latedit{{ $item->id }}').val(position.coords.latitude);
+                                                                    $('#longedit{{ $item->id }}').val(position.coords.longitude);
+
+                                                                    swal("Done", "Lokasi Berhasil Didapatkan", "success");
+                                                                }
+                                                            </script>
 
                                                             <div class="form-group">
                                                                 <label for="">Tempat</label>
@@ -350,9 +387,16 @@
 
                                                         <label for="formFile" class="form-label">Upload TTD
                                                             Pemeriksa</label>
-                                                        <input name="ttd_pemeriksa" class="form-control input-rounded"
-                                                            id="formFileSm" type="file">
+                                                        {{-- <input name="ttd_pemeriksa" class="form-control input-rounded"
+                                                            id="formFileSm" type="file"> --}}
+                                                        <div id="sig"></div>
+                                                        <br /><br />
+                                                        <button id="clear"
+                                                            class="btn btn-danger btn-sm">Clear</button>
+                                                        <textarea id="signature" name="ttd_pemeriksa" style="display: none" required></textarea>
                                                     </div>
+
+
 
                                                 </div>
 
@@ -395,6 +439,8 @@
                                                         class="form-control input-rounded" placeholder="Input Place">
                                                 </div>
 
+
+
                                                 <div class="form-group">
                                                     <label for="">Tempat</label>
                                                     <input name="tempat" type="text"
@@ -427,38 +473,17 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('sc/getlocation.js') }}"></script>
     <script type="text/javascript">
-        function getlocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                swal("Wrong!", "Browser Anda Tidak Support", "error");
-            }
-        }
-
-        function showPosition(position) {
-            $('#lat').val(position.coords.latitude);
-            $('#long').val(position.coords.longitude);
-
-            swal("Done", "Lokasi Berhasil Didapatkan", "success");
-        }
-    </script>
-
-    <script type="text/javascript">
-        function getlocationedit() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPositionedit);
-            } else {
-                swal("Wrong!", "Browser Anda Tidak Support", "error");
-            }
-        }
-
-        function showPositionedit(position) {
-            $('#latedit').val(position.coords.latitude);
-            $('#longedit').val(position.coords.longitude);
-
-            swal("Done", "Lokasi Berhasil Didapatkan", "success");
-        }
+        var sig = $('#sig').signature({
+            syncField: '#signature',
+            syncFormat: 'PNG'
+        });
+        $('#clear').click(function(e) {
+            e.preventDefault();
+            sig.signature('clear');
+            $("#signature64").val('');
+        });
     </script>
 
     <script>

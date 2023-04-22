@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatablesbutton.css') }}">
     <link href="{{ asset('plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
     {{-- <link href="{{ asset('plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> --}}
 
     {{-- <link href="{{ asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}"
@@ -32,6 +34,7 @@
 
     {{-- <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet"> --}}
     <!-- Custom Stylesheet -->
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     @yield('css')
@@ -132,7 +135,10 @@ Scripts
     <script src="{{ asset('plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
 
-
+    {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
     @yield('script')
 
 </body>

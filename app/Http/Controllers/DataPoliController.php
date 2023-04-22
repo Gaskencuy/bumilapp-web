@@ -35,7 +35,7 @@ class DataPoliController extends Controller
             [
                 'id_user' => 'required',
                 'nama_pemeriksa' => 'required|max:30',
-                'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                'ttd_pemeriksa' => 'required',
                 'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
                 'lat' => 'required',
                 'long' => 'required',
@@ -47,9 +47,6 @@ class DataPoliController extends Controller
                 'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
                 'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
                 'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
-                'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
-                'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
-                'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 5 MB',
                 'bukti_pemeriksaan.required' => 'Bukti Pemeriksaan tidak boleh kosong',
                 'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
                 'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
@@ -65,8 +62,14 @@ class DataPoliController extends Controller
 
         $datapoli = new DataPoli();
 
-        $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
-        $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+        // $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
+        // $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+
+        $ttd = $request->ttd_pemeriksa;
+        $ttd = str_replace('data:image/png;base64,', '', $ttd);
+        $ttd = str_replace(' ', '+', $ttd);
+        $fileNameTTD = time() . '.png';
+        File::put(public_path('foto/ttd/') . $fileNameTTD, base64_decode($ttd));
 
         $fileNameBukti = time() . '.' . $request->bukti_pemeriksaan->extension();
         $request->bukti_pemeriksaan->move(public_path('foto/bukti/'), $fileNameBukti);
@@ -170,7 +173,7 @@ class DataPoliController extends Controller
                 [
                     'id_user' => 'required',
                     'nama_pemeriksa' => 'required|max:30',
-                    'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                    'ttd_pemeriksa' => 'required',
                     'lat' => 'required',
                     'long' => 'required',
                     'tempat' => 'required|max:30',
@@ -181,9 +184,6 @@ class DataPoliController extends Controller
                     'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
                     'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
                     'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
-                    'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
-                    'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
-                    'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 5 MB',
                     'lat.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'long.required' => 'Silahkan tekan tombol "Ambil Lokasi" untuk mengambil lokasi',
                     'tempat.required' => 'Tempat tidak boleh kosong',
@@ -196,8 +196,14 @@ class DataPoliController extends Controller
             $update = DataPoli::where('id', $id)->first();
             File::delete(public_path('foto/ttd') . '/' . $update->ttd_pemeriksa);
 
-            $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
-            $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+            // $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
+            // $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+
+            $ttd = $request->ttd_pemeriksa;
+            $ttd = str_replace('data:image/png;base64,', '', $ttd);
+            $ttd = str_replace(' ', '+', $ttd);
+            $fileNameTTD = time() . '.png';
+            File::put(public_path('foto/ttd/') . $fileNameTTD, base64_decode($ttd));
 
             $datapoli = DataPoli::find($id);
             $datapoli->id_user = $request->id_user;
@@ -214,7 +220,7 @@ class DataPoliController extends Controller
                 [
                     'id_user' => 'required',
                     'nama_pemeriksa' => 'required|max:30',
-                    'ttd_pemeriksa' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                    'ttd_pemeriksa' => 'required',
                     'bukti_pemeriksaan' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
                     'tempat' => 'required|max:30',
                     'tanggal' => 'required|date',
@@ -224,9 +230,6 @@ class DataPoliController extends Controller
                     'nama_pemeriksa.required' => 'Nama Pemeriksa tidak boleh kosong',
                     'nama_pemeriksa.max' => 'Nama Pemeriksa maksimal 30 karakter',
                     'ttd_pemeriksa.required' => 'TTD Pemeriksa tidak boleh kosong',
-                    'ttd_pemeriksa.image' => 'TTD Pemeriksa harus berupa gambar',
-                    'ttd_pemeriksa.mimes' => 'TTD Pemeriksa harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
-                    'ttd_pemeriksa.max' => 'TTD Pemeriksa maksimal 5 MB',
                     'bukti_pemeriksaan.required' => 'Bukti Pemeriksaan tidak boleh kosong',
                     'bukti_pemeriksaan.image' => 'Bukti Pemeriksaan harus berupa gambar',
                     'bukti_pemeriksaan.mimes' => 'Bukti Pemeriksaan harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
@@ -246,8 +249,13 @@ class DataPoliController extends Controller
             $updatebukti = DataPoli::where('id', $id)->first();
             File::delete(public_path('foto/bukti') . '/' . $updatebukti->bukti_pemeriksaan);
 
-            $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
-            $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+            // $fileNameTTD = time() . '.' . $request->ttd_pemeriksa->extension();
+            // $request->ttd_pemeriksa->move(public_path('foto/ttd/'), $fileNameTTD);
+            $ttd = $request->ttd_pemeriksa;
+            $ttd = str_replace('data:image/png;base64,', '', $ttd);
+            $ttd = str_replace(' ', '+', $ttd);
+            $fileNameTTD = time() . '.png';
+            File::put(public_path('foto/ttd/') . $fileNameTTD, base64_decode($ttd));
 
             $fileNameBukti = time() . '.' . $request->bukti_pemeriksaan->extension();
             $request->bukti_pemeriksaan->move(public_path('foto/bukti/'), $fileNameBukti);
