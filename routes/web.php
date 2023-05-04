@@ -35,6 +35,7 @@ Route::get('/index', function () {
 Route::get('/login', [AuthController::class, 'index'])->middleware('IsStay');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::put('/profil-update/{id}', [AuthController::class, 'profilupdate'])->middleware('IsLogin');
 
 Route::get('/pengingat', [PengingatController::class, 'index'])->middleware('IsLogin');
 Route::post('/pengingat', [PengingatController::class, 'create'])->middleware('IsLogin');

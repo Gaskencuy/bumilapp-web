@@ -142,10 +142,10 @@
                                                                     <span onclick="deletesignature{{ $item->id }}()"
                                                                         class="btn btn-danger btn-sm">Clear</span>
 
-                                                                    <textarea id="signatureedit{{ $item->id }}" name="ttd_pemeriksa" style="display: none" required></textarea>
+                                                                    {{-- <canvas id="signatureedit{{ $item->id }}"
+                                                                        name="ttd_pemeriksa" style="display: none"></canvas> --}}
 
-
-
+                                                                    <textarea id="signatureedit{{ $item->id }}" name="ttd_pemeriksa" style="display: none"></textarea>
                                                                 </div>
 
 
@@ -387,7 +387,7 @@
                                                         <br /><br />
                                                         <button id="clear"
                                                             class="btn btn-danger btn-sm">Clear</button>
-                                                        <textarea id="signature" name="ttd_pemeriksa" style="display: none" required></textarea>
+                                                        <textarea id="signature" name="ttd_pemeriksa" style="display: none"></textarea>
                                                     </div>
 
 
@@ -467,14 +467,11 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
     <script src="{{ asset('sc/getlocation.js') }}"></script>
     <script type="text/javascript">
         var sig = $('#sig').signature({
             syncField: '#signature',
-            syncFormat: 'PNG'
+            syncFormat: 'PNG',
         });
         $('#clear').click(function(e) {
             e.preventDefault();
@@ -483,51 +480,11 @@
         });
     </script>
 
-    <script type="text/javascript">
-        var sigedit9 = $('#sigedit9').signature({
-            syncField: '#signatureedit9',
-            syncFormat: 'PNG'
-        });
-
-        function deletesignature9() {
-            sigedit9.signature('clear');
-            $("#signatureedit9").val('');
-        }
-    </script>
-
-
-    {{-- <script type="text/javascript">
-        var sigedit12 = $('#sigedit12').signature({
-            syncField: '#signatureedit12',
-            syncFormat: 'PNG'
-        });
-
-        function deletesignature12() {
-            sigedit12.signature('clear');
-            $("#signatureedit12").val('');
-        }
-    </script>
-
-    <script type="text/javascript">
-        var sigedit13 = $('#sigedit13').signature({
-            syncField: '#signatureedit13',
-            syncFormat: 'PNG'
-        });
-
-        function deletesignature13() {
-            sigedit13.signature('clear');
-            $("#signatureedit13").val('');
-        }
-    </script> --}}
-
-
-
-
     @foreach ($dataPoli as $data)
         <script type="text/javascript">
             var sigedit{{ $data->id }} = $('#sigedit{{ $data->id }}').signature({
                 syncField: '#signatureedit{{ $data->id }}',
-                syncFormat: 'PNG'
+                syncFormat: 'PNG',
             });
 
             function deletesignature{{ $data->id }}() {
@@ -536,8 +493,6 @@
             }
         </script>
     @endforeach
-
-
 
     <script>
         $(document).ready(function() {

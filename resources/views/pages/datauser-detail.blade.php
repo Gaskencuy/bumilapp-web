@@ -1,7 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('title')
-    Detail User
+    {{ $user->name }}
 @endsection
 
 @section('content')
@@ -91,8 +91,8 @@
                                             <td>{{ $item->nama_pemeriksa }}</td>
                                             <td class="align-middle text-center">
                                                 <span>
-                                                    <button data-toggle="modal" data-target="#buktiModal{{ $item->id }}"
-                                                        type="button"
+                                                    <button data-toggle="modal"
+                                                        data-target="#buktiModal{{ $item->id }}" type="button"
                                                         class="btn mb-1 btn-rounded btn-outline-warning btn-sm">Detail</button>
                                             </td>
 

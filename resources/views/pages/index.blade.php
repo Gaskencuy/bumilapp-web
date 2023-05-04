@@ -574,6 +574,18 @@
         </script>
     @endif
 
+    @if (Session::get('updateprofil'))
+        <script>
+            swal("Well Done", "Password Berhasil Diperbarui", "success");
+        </script>
+    @endif
+
+    @if (Session::get('updateprofilerror'))
+        <script>
+            swal("Opps!!", "Password Anda Salah", "error");
+        </script>
+    @endif
+
     @if (Session::get('sudahlogin'))
         <script>
             swal("Notice", "Anda Masih Login", "success");

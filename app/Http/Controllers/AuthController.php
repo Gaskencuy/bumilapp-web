@@ -49,6 +49,28 @@ class AuthController extends Controller
         }
     }
 
+    public function profilupdate(Request $request, $id)
+    {
+        $request->validate(
+            [
+                'password' => 'required',
+                'repassword' => 'required', 'same:password',
+            ],
+
+            [
+                'password.required' => 'password tidak boleh kosong',
+                'repassword.required' => 'repassword tidak boleh kosong',
+                'repassword.same' => 'repassword tidak sama dengan password',
+            ],
+        );
+
+        $user = User::find($id);
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->intended('/index')->with('updateprofil', 'berhasil update profil');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

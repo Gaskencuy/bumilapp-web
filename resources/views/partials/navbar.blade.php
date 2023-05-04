@@ -11,7 +11,7 @@
          </div>
          <div class="header-left">
              <div class="input-group icons">
-                 <div class="input-group-prepend">
+                 {{-- <div class="input-group-prepend">
                      <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                              class="mdi mdi-magnify"></i></span>
                  </div>
@@ -21,12 +21,12 @@
                      <form action="#">
                          <input type="text" class="form-control" placeholder="Search">
                      </form>
-                 </div>
+                 </div> --}}
              </div>
          </div>
          <div class="header-right">
              <ul class="clearfix">
-                 <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
+                 {{-- <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
                          <i class="mdi mdi-email-outline"></i>
                          <span class="badge badge-pill gradient-1">3</span>
                      </a>
@@ -160,7 +160,7 @@
                              </ul>
                          </div>
                      </div>
-                 </li>
+                 </li> --}}
                  <li class="icons dropdown">
                      <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                          <span class="activity active"></span>
@@ -173,18 +173,18 @@
                                      <a data-toggle="modal" data-target="#profileModal" href="#"><i
                                              class="icon-user"></i> <span>Profile</span></a>
                                  </li>
-                                 <li>
+                                 {{-- <li>
                                      <a href="javascript:void()">
                                          <i class="icon-envelope-open"></i> <span>Inbox</span>
                                          <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                      </a>
-                                 </li>
+                                 </li> --}}
 
-                                 <hr class="my-2">
-                                 <li>
+                                 {{-- <hr class="my-2"> --}}
+                                 {{-- <li>
                                      <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
                                              Screen</span></a>
-                                 </li>
+                                 </li> --}}
                                  <li><a data-toggle="modal" data-target="#logoutModal" href="#"><i
                                              class="icon-key"></i> <span>Logout</span></a>
                                  </li>
