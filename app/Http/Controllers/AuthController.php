@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -53,22 +54,46 @@ class AuthController extends Controller
     {
         $request->validate(
             [
+                'name' => 'required',
+                'username' => 'required|unique:users,username,' . $id . ',id',
+                'email' => 'required|email|unique:users,email,' . $id . ',id',
+                'oldpassword' => 'required',
                 'password' => 'required',
                 'repassword' => 'required', 'same:password',
             ],
 
             [
+                'name.required' => 'name tidak boleh kosong',
+                'username.required' => 'username tidak boleh kosong',
+                'username.unique' => 'username sudah ada',
+                'email.unique' => 'email sudah ada',
+                'email.email' => 'email tidak valid',
+                'email.required' => 'email tidak boleh kosong',
+                'oldpassword.required' => 'oldpassword tidak boleh kosong',
                 'password.required' => 'password tidak boleh kosong',
                 'repassword.required' => 'repassword tidak boleh kosong',
                 'repassword.same' => 'repassword tidak sama dengan password',
             ],
         );
 
-        $user = User::find($id);
-        $user->password = bcrypt($request->password);
-        $user->save();
+        if (Hash::check($request->oldpassword, Auth::user()->password)) {
 
-        return redirect()->intended('/index')->with('updateprofil', 'berhasil update profil');
+            if ($request->password == $request->repassword) {
+                $user = User::find($id);
+                $user->name = $request->name;
+                $user->username = $request->username;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+                $user->save();
+                return redirect()->intended('/index')->with('updateprofil', 'berhasil update profil');
+            } else {
+
+                return redirect()->intended('/index')->with('passwordtidaksama', 'gagal update profil');
+            }
+        } else {
+
+            return redirect()->intended('/index')->with('updateprofilerror', 'gagal update profil');
+        }
     }
 
     public function logout(Request $request)

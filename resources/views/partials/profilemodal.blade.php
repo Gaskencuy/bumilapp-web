@@ -15,18 +15,23 @@
                     </div>
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input disabled type="text" name="name" value="{{ Auth::User()->name }}"
+                        <input type="text" name="name" value="{{ Auth::User()->name }}"
                             class="form-control input-rounded" placeholder="Input Rounded">
                     </div>
                     <div class="form-group">
                         <label for="">Username</label>
-                        <input disabled type="text" name="username" value="{{ Auth::User()->username }}"
+                        <input type="text" name="username" value="{{ Auth::User()->username }}"
                             class="form-control input-rounded" placeholder="Input Rounded">
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input disabled type="email" name="email" value="{{ Auth::User()->email }}"
+                        <input type="email" name="email" value="{{ Auth::User()->email }}"
                             class="form-control input-rounded" placeholder="Input Rounded">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Old Password</label>
+                        <input type="password" name="oldpassword" class="form-control input-rounded"
+                            placeholder="Input Rounded">
                     </div>
                     <div class="form-group">
                         <label for="">New Password</label>

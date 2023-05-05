@@ -5,7 +5,24 @@
 @endsection
 
 @section('content')
+
     <div class="container-fluid mt-3">
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+
+                <?php
+                
+                $nomer = 1;
+                
+                ?>
+
+                @foreach ($errors->all() as $error)
+                    <li>{{ $nomer++ }}. {{ $error }}</li>
+                @endforeach
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="card gradient-1">
@@ -583,6 +600,12 @@
     @if (Session::get('updateprofilerror'))
         <script>
             swal("Opps!!", "Password Anda Salah", "error");
+        </script>
+    @endif
+
+    @if (Session::get('passwordtidaksama'))
+        <script>
+            swal("Opps!!", "Konfirmasi Password Anda Salah", "error");
         </script>
     @endif
 
