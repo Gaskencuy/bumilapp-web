@@ -30,9 +30,9 @@
 
 
                                 <?php
-
+                                
                                 $nomer = 1;
-
+                                
                                 ?>
 
                                 @foreach ($errors->all() as $error)
@@ -45,6 +45,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Image</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Email</th>
@@ -53,13 +54,20 @@
                                 </thead>
                                 <tbody>
                                     <?php
-
+                                    
                                     $no = 1;
-
+                                    
                                     ?>
                                     @foreach ($userList as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
+                                            <td>
+
+                                                <img class="rounded-circle" src="{{ asset('foto/user/' . $item['image']) }}"
+                                                    height="40" width="40" alt="">
+
+                                            </td>
+
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->username }}</td>
                                             <td>{{ $item->email }}</td>
@@ -89,7 +97,8 @@
                                                             data-dismiss="modal"><span>&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="/datauser-update/{{ $item->id }}" method="post">
+                                                    <form action="/datauser-update/{{ $item->id }}" method="post"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
@@ -99,6 +108,16 @@
                                                                     value="{{ $item->name }}"
                                                                     class="form-control input-rounded"
                                                                     placeholder="Input Name" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+
+
+                                                                <label for="formFile" class="form-label">Upload Foto</label>
+                                                                <input name="image" class="form-control input-rounded"
+                                                                    id="formFileSm" type="file">
+
+
                                                             </div>
 
                                                             <div class="form-group">
@@ -179,13 +198,22 @@
                                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                         </button>
                                     </div>
-                                    <form action="/datauser" method="post">
+                                    <form action="/datauser" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="">Name</label>
                                                 <input name="name" type="text" class="form-control input-rounded"
                                                     placeholder="Input Name" required>
+                                            </div>
+
+                                            <div class="form-group">
+
+
+                                                <label for="formFile" class="form-label">Upload Foto</label>
+                                                <input name="image" class="form-control input-rounded" id="formFileSm"
+                                                    type="file">
+
                                             </div>
 
                                             <div class="form-group">

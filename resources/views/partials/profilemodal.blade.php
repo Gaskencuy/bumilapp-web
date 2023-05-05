@@ -10,9 +10,9 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <img src="" class="rounded-circle" alt="..." height="200">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" name="name" value="{{ Auth::User()->name }}"
